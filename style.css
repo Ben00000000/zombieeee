@@ -1,0 +1,84 @@
+body, html {
+  margin: 0;
+  padding: 0;
+     touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+        user-select: none;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/Top%20down%20Place.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+#player {
+  position: absolute;
+  left:50%;
+  top:50%;
+  width: 84.7px; /* Individual frame width */
+  height: 128px; /* Individual frame height */
+  animation: playerIdle 3s steps(20) infinite;
+  z-index: 1;
+}
+
+@keyframes playerIdle {
+  from { background-position: 0; }
+  to { background-position: -1694px; } /* Total sprite width */
+}
+
+#joystick {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#joystick .stick {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+.enemy {
+  position: absolute;
+  width: 128px; /* Individual frame width */
+  height: 128px; /* Individual frame height */
+   background-image: url('https://raw.githubusercontent.com/Ben00000000/asstes/main/spritesheet%20(31)%20(1).png');
+  background-size: cover;
+  animation: enemyAnimation 2s steps(17) infinite;
+  z-index: 2;
+}
+
+@keyframes enemyAnimation {
+  from { background-position: 0; }
+  to { background-position: -2350px; } /* Total sprite width (260px * 4 frames) */
+}
+
+
+.flipped {
+  transform: scaleX(-1);
+}
+.enemy.flipped-vertical {
+  transform: scaleY(-1);
+}
+.bullet {
+  width: 10px;
+  height: 20px;
+  background: linear-gradient(to bottom, #F9C223, #ff0000); /* Adjust the colors as needed */
+  border-radius: 50%; /* This creates a circular shape with rounded corners */
+  position: absolute;
+  z-index: 999;
+}
